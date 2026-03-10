@@ -1,23 +1,16 @@
 class Solution {
 public:
-    int dp[10001];
-    int fun(int amount,vector<int> &arr){
-        if(amount == 0 ) return 0;
-        if(amount < 0) return INT_MAX;
-        if(dp[amount]!=-1) return dp[amount];
-        int k,mini=INT_MAX;
-        for(int i=0;i<arr.size();i++){
-            k=fun(amount-arr[i],arr);
-            if(k!=INT_MAX){
-                mini=min(mini,k+1);
+    int coinChange(vector<int>& coins, int amount) {
+        int dp[amount+1];
+        dp[0]=0;
+        for(int i=1;i<amount+1;i++){
+            int mini=INT_MAX;
+            for(int j=0;j<coins.size();j++){
+                if(i-coins[j] >=0) mini=min(mini,dp[i-coins[j]]);            
             }
+            if(mini != INT_MAX) dp[i]=1+mini;
+            else dp[i]=mini;
         }
-        return dp[amount] = mini;
-    }
-    int coinChange(vector<int>& arr, int amount) {
-        memset(dp,-1,sizeof(dp));
-        int ans=fun(amount,arr);
-        if(ans==INT_MAX) return -1;
-        return ans;
+        return (dp[amount]!=INT_MAX) ? dp[amount] : -1;
     }
 };
