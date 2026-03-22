@@ -3,7 +3,7 @@ public:
     void rotate(vector<vector<int>> & mat){
         int n=mat.size();
         for(int i = 0; i < n; i++) {
-            for(int j = i + 1; j < n; j++) {
+            for(int j = i; j < n; j++) {
                 swap(mat[i][j], mat[j][i]);
             }
         }
@@ -12,13 +12,7 @@ public:
         }
     }
     bool check(vector<vector<int>> &mat,vector<vector<int>> &tar){
-        int n = mat.size();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(mat[i][j] != tar[i][j]) return 0;
-            }
-        }
-        return 1;
+        return mat == tar;
     }
     bool findRotation(vector<vector<int>>& mat, vector<vector<int>>& tar) {
         bool a = check(mat,tar);
