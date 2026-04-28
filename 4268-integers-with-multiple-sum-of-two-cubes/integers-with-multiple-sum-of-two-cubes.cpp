@@ -5,6 +5,7 @@ public:
         for (int i = 1 ; i*i*i <= n ; i++){
             for(int j = 1 ; j <= i-1 ; j++){
                 if((i*i*i + j*j*j) <= n) mpp[(i*i*i + j*j*j)]++;
+                else break;
             }
         }
         vector<int> arr;
