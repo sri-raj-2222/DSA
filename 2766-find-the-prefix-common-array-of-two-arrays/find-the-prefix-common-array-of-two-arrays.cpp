@@ -4,12 +4,12 @@ public:
         int n = A.size();
         map<int,int> mpp;
         vector<int> arr;
+        int cnt = 0;
         for(int i = 0 ; i < n ; i++){
-            int cnt = 0;
-            mpp[A[i]] = 1;
-            for(int j = 0 ; j <= i ; j++){
-                if(mpp[B[j]] == 1) cnt++;
-            }
+            mpp[A[i]]++;
+            if(mpp[A[i]] ==  2) cnt++;
+            mpp[B[i]]++;
+            if(mpp[B[i]] ==  2) cnt++;
             arr.push_back(cnt);
         }
         return arr;
