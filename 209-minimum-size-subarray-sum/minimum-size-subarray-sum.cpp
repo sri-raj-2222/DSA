@@ -4,13 +4,20 @@ public:
         int i=0,j=0;
         int cur_sum=0;
         int size=INT_MAX;
-        while(j<nums.size()){
-            cur_sum+=nums[j++];
-            while(cur_sum >= target){
+        while(j<nums.size() && i <= j){
+            if(cur_sum >= target ){
                 size=min(size,j-i);
-                cur_sum-=nums[i++];
+                cur_sum -= nums[i++];
             }
-            cout<<cur_sum<<" ";
+            else{
+                cur_sum += nums[j++];
+                if(cur_sum >= target) size=min(size,j-i); 
+            }
+        }
+        cur_sum -= nums[i++];
+        while(cur_sum >= target){
+            size = min(size,j-i);
+            cur_sum -= nums[i++];
         }
         if(size==INT_MAX) return 0;
         else return size;
