@@ -15,7 +15,7 @@ public:
         }
         return dp[l][r] = true;
     }
-    void solve(int index,vector<string>path,string s)
+    void solve(int index,vector<string>&path,string& s)
     {
         if(index==s.size())
         {
