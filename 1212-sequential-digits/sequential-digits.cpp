@@ -2,10 +2,6 @@ class Solution {
 public:
     vector<int> arr;
     void solve(int sum,int low,int high,int start){
-        int ll=log10(low)+1;
-        int hl=log10(high)+1;
-        int sl;
-        sum == 0 ? sl=0 : sl = log10(sum)+1;
         if(sum >= low && sum <= high){
             arr.push_back(sum);
         }
