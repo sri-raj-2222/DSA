@@ -1,26 +1,26 @@
 class Solution {
 public:
-    long long fact(long long n){
-        if(n==0 || n==1) return 1;
-        else return n*fact(n-1);
-    }
-    void dfs(long long a,vector<int> &nums,set<vector<int>> & arr){
-        if(arr.count(nums)) return;
-        arr.insert(nums);
-        for(int i=1;i<nums.size();i++){
-            swap(nums[0],nums[i]);
-            dfs(a,nums,arr);
-            swap(nums[0],nums[i]);
+vector<vector<int>> ans;
+    void solve(vector<int> &nums,vector<int> &arr,vector<bool> &vis){
+        if(arr.size() == nums.size()){
+            ans.push_back(arr);
+            return;
+        }
+        for(int i=0;i<nums.size();i++){
+            if(!vis[i]){
+                arr.push_back(nums[i]);
+                vis[i] = 1;
+                solve(nums,arr,vis);
+                arr.pop_back();
+                vis[i] = 0;
+            }
         }
     }
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> ans;
-        set<vector<int>> arr;
-        long long a=fact(nums.size());
-        dfs(a,nums,arr);
-        for(auto i : arr){
-            ans.push_back(i);
-        }
+        int n=nums.size();
+        vector<int> arr;
+        vector<bool> vis(n);
+        solve(nums,arr,vis);
         return ans;
     }
 };
