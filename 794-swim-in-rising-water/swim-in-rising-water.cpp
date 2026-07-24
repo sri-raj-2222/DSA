@@ -11,9 +11,9 @@ public:
         int row[4] = {0,0,1,-1};
         int col[4] = {1,-1,0,0};
         dist[0][0] = grid[0][0];
-        pq.push({0,0,grid[0][0]});
+        pq.push({grid[0][0],0,0});
         while(!pq.empty()){
-            auto [r,c,d] = pq.top();
+            auto [d,r,c] = pq.top();
             pq.pop();
             for(int i=0;i<4;i++){
                 int nr=r+row[i];
@@ -22,7 +22,7 @@ public:
                     int nd = max(d,grid[nr][nc]);
                     if(dist[nr][nc] > nd){
                         dist[nr][nc] = nd;
-                        pq.push({nr,nc,nd}); 
+                        pq.push({nd,nr,nc});
                     }
                 }
             }
