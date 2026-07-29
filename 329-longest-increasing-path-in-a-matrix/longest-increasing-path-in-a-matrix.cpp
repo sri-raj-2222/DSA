@@ -25,7 +25,9 @@ public:
         vector<vector<int>> dist(n,vector<int>(m,-1));
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                ans = max(ans,solve(i,j,grid,dist));
+                if(dist[i][j] == -1){
+                    ans = max(ans,solve(i,j,grid,dist));
+                }
             }
         }
         return ans;
