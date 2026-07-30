@@ -9,7 +9,7 @@ public:
         for(int i=1;i<n;i++){
             pre[i] = pre[i-1]+nums[i];
         }
-        map<int,int> mpp;
+        unordered_map<int,int> mpp;
         mpp[0] = 1;
         int ans = 0;
         for(int i=0;i<n;i++){
