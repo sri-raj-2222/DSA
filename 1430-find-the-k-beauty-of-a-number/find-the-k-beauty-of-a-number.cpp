@@ -14,7 +14,6 @@ public:
             s+=str[i];
             string sub = s.substr(i-k+1,k);
             int val = stoi(sub);
-            cout<<val<<" ";
             if(val!=0 && num % val == 0) ans++;
         }
         return ans;
