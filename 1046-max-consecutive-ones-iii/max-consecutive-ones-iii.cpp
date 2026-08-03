@@ -6,13 +6,11 @@ public:
         int maxi=0;
         while(i <= j && j < n){
             if(nums[j] == 0) a++;
-            if(a > k){
-                while(a > k){
-                    if(nums[i] == 0){
-                        a--;
-                    }
-                    i++;
+            while(a > k){
+                if(nums[i] == 0){
+                    a--;
                 }
+                i++;
             }
             maxi = max(maxi,j-i+1);
             j++;
