@@ -2,7 +2,7 @@ class Solution {
 public:
     int totalFruit(vector<int>& nums){
         int n = nums.size();
-        map<int,int> mpp;
+        unordered_map<int,int> mpp;
         int i=0,j=0,ans=0;
         while(i <= j && j < n){
             mpp[nums[j]]++;
