@@ -5,9 +5,8 @@ int col[4] = {1,-1,0,0};
     bool solve(int i,int j,int ind,vector<vector<char>> &board ,string word,vector<vector<bool>> &vis){
         int n=board.size();
         int m=board[0].size();
-        if(word[ind] != board[i][j]) return 0;
+        if(word[ind] != board[i][j] || vis[i][j]) return 0;
         if(word.size()-1 == ind) return 1;
-        if(vis[i][j]) return 0;
         if(word[ind] == board[i][j]){
             vis[i][j] = 1;
             for(int k=0;k<4;k++){
